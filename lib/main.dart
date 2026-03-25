@@ -208,14 +208,14 @@ class _DashboardState extends State<Dashboard> {
                 decoration: BoxDecoration(borderRadius: BorderRadius.circular(12), color: const Color(0xFF282C34)),
                 child: Stack(
                   children: [
-                    SingleChildScrollView(
-                      padding: const EdgeInsets.all(16),
-                      child: SyntaxView(
-                        code: comp.code,
-                        syntax: Syntax.DART,
-                        theme: SyntaxTheme.dracula(),
-                      ),
-                    ),
+                    // SingleChildScrollView(
+                    //   padding: const EdgeInsets.all(16),
+                    //   child: SyntaxView(
+                    //     code: comp.code,
+                    //     syntax: Syntax.DART,
+                    //     theme: SyntaxTheme.dracula(),
+                    //   ),
+                    // ),
                     Positioned(
                       top: 10, right: 10,
                       child: ElevatedButton.icon(
