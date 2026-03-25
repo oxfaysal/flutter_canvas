@@ -1,0 +1,33 @@
+name: Deploy Flutter Canvas to GH Pages
+
+on:
+  push:
+    branches:
+      - main # Apnar main branch-er naam jodi 'master' hoy, tobe 'master' likhun
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # ১. GitHub repository theke code niye asha
+      - uses: actions/checkout@v3
+
+      # ২. Flutter SDK setup kora
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+
+      # ৩. Flutter dependencies install kora
+      - run: flutter pub get
+
+      # ৪. Web Build toiri kora (base-href thik rekhe)
+      - run: flutter build web --release --base-href "/flutter_canvas/"
+
+      # ৫. Build folder-ti gh-pages branch-e deploy kora
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build/web
+          force_orphan: true
